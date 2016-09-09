@@ -7,6 +7,6 @@ require 'sass'
 require 'coffee-script'
 
 get '/' do
-  @mes = 'Hello!'
+  @mes = 'Sinatar de Hello!'
   haml :index
 end

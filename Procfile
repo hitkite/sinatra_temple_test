@@ -1,2 +1,2 @@
 # Procfile
-web: bundle exec ruby app.rb -p $PORT -o $IP
+web: bundle exec ruby app.rb -p $PORT

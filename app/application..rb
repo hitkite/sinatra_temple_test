@@ -1,12 +1,15 @@
-require 'bundler/setup'
+# require 'bundler/setup'
+require 'bundler'
+Bundler.require
 
-require 'slim'
-require 'sass'
-require 'coffee-script'
+$: << File.expand_path('../', __FILE__)
+Dir['./app/**/*.rb'].sort.each { |file| require file }
 
-require 'sinatra'
-require 'active_record'
-require 'sinatra/activerecord'
+# configure sinatra
+set :root, Dir['./app']
+set :public_folder, Proc.new { File.join(root, 'assets') }
+set :erb, :layout => :'layouts/application'
+
 
 # set :environment, ENV["RACK_ENV"] == "deployment"? :production : ENV["RACK_ENV"].to_sym
 

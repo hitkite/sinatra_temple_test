@@ -1,17 +1,34 @@
-# app.rb
 require 'bundler/setup'
-require 'sinatra'
-require 'activerecord'
 
-require 'haml'
+require 'slim'
 require 'sass'
 require 'coffee-script'
 
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'sqlite3://localhost/app.db')
+require 'sinatra'
+require 'active_record'
+require 'sinatra/activerecord'
 
-class Count < ActiveRecord::Base; end
-  
+# set :environment, ENV["RACK_ENV"] == "deployment"? :production : ENV["RACK_ENV"].to_sym
+
+# if settings.production?
+#   # Heroku PostgreSQL Database Connecting
+#   ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'sqlite3://localhost/app.db')
+# else 
+  require './models/user'
+# end
+
+class User < ActiveRecord::Base
+end
+
 get '/' do
-  @mes = 'Sinatar de Hello!'
-  haml :index
+  @users = User.all
+  slim :index
+end
+
+post '/' do
+  user = User.new
+  user.email = params[:email]
+  user.order = params[:order]
+  user.save
+  redirect "/" 
 end

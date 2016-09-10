@@ -5,6 +5,5 @@ class CreateUsers < ActiveRecord::Migration
       t.string :order
       t.timestamps  
     end
-
   end
 end

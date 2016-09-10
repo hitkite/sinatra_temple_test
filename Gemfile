@@ -1,17 +1,24 @@
 # Gemfile
 source 'https://rubygems.org'
 
-gem 'activerecord'
 gem 'sinatra'
-gem 'sinatra-activerecord'
+
+# Assets
+gem 'slim'
+
+gem'sass'
+gem 'coffee-script'
 
 gem 'rake'
-# Assets
-gem 'haml'
-gem 'sass'
-gem 'coffee-script'
-gem 'pg'
+
+gem 'activerecord'
+gem 'sinatra-activerecord'
+
+group :production do
+  gem 'pg'
+end
 
 group :development do
+  gem 'sqlite3'
   gem 'foreman'
 end 

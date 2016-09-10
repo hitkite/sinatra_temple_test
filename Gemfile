@@ -2,6 +2,11 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
+gem 'rake'
+gem 'sqlite3'
+gem 'activerecord'
+gem 'sinatra-activerecord'
+
 
 # Assets
 gem 'slim'
@@ -9,16 +14,13 @@ gem 'slim'
 gem'sass'
 gem 'coffee-script'
 
-gem 'rake'
 
-gem 'activerecord'
-gem 'sinatra-activerecord'
 
 group :production do
   gem 'pg'
 end
 
 group :development do
-  gem 'sqlite3'
+  gem "sinatra-contrib"
   gem 'foreman'
 end 
